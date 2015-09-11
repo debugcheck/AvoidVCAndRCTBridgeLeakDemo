@@ -5,9 +5,11 @@ A demo repository to show potential leaks of VC and bridge leaks using React Nat
 ##Problem
 The `TwoViewController` won't get deallocated, as well as the `RCTBridge` backing up the `RCTRootView`.  
 ##Reason
-The reason why controllers and bridges won't get deallocated is there is a retain cycle in between. 
-![graph](/Users/baidu/Desktop/屏幕快照 2015-09-11 下午4.27.23.png)
+The reason why controllers and bridges won't get deallocated is there is a retain cycle in between.   Thanks to @tadeuzagallo to point this out.
+
+
 ##Solution
+I tried `[bridge invalidate]` and `[bridge reload]` to break the retain cycle. As @tadeuzagallo suggested, there's another possible way.
 
 ##Usage
 Run `pod install` first in the 'VCAndRCTBridgeLeakDemo' directory.
